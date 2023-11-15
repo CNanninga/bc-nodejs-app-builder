@@ -1,10 +1,13 @@
 import { GlobalStyles } from '@bigcommerce/big-design';
 import type { AppProps } from 'next/app';
+import SessionProvider from '../context/session';
 
 const MyApp = ({ Component, pageProps }: AppProps) => (
     <>
         <GlobalStyles />
-        <Component {...pageProps} />
+        <SessionProvider>
+            <Component {...pageProps} />
+        </SessionProvider>
     </>
  );
   
