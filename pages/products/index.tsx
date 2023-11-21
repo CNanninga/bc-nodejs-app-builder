@@ -4,6 +4,8 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { ReactElement } from 'react';
 import { useProductList } from '../../lib/hooks';
+import ErrorMessage from '../../components/error';
+import Loading from '../../components/loading';
 
 const Products = () => {
     const router = useRouter();
@@ -38,6 +40,9 @@ const Products = () => {
             toggle={<Button iconOnly={<MoreHorizIcon color="secondary60" />} variant="subtle" />}
         />
     );
+
+    if (isLoading) return <Loading />;
+    if (isError) return <ErrorMessage />;
 
     return (
         <Panel>
